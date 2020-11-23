@@ -20,30 +20,30 @@ void menu()
 	while (running)
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		cords(50, 10);
+		cords(61, 10);
 		std::cout << "Main Menu";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
-		cords(45, 11);
+		cords(56, 11);
 		std::cout << "___________________";
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		cords(48, 14);
+		cords(59, 14);
 		std::cout << "1) Level Select";
-		cords(48, 16);
+		cords(59, 16);
 		std::cout << "2) How to Play";
-		cords(48, 18);
+		cords(59, 18);
 		std::cout << "3) Credits";
-		cords(48, 20);
+		cords(59, 20);
 		std::cout << "4) Exit Game";
 
 		while (input != char(13)) //if enter hasn't been inputted
 		{
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
-			cords(45, 14 + y);
+			cords(56, 14 + y);
 			std::cout << "->"; //cursor
 			cords(0, 0); //puts the underscore at top left
 			input = _getch();
-			cords(45, 14 + y);
+			cords(56, 14 + y);
 			std::cout << "  ";
 
 			if (input == 's')
@@ -103,11 +103,31 @@ void levelSelect()
 		//Name change later accordingly..
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		cords(10, 6);
+		std::cout << "Escape the Prison";
+		cords(0, 9);
+		std::cout << " _|_||___||___||___||___||___||___||_|_ \n";
+		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << " _|_||___||___||___||___||___||___||_|_ \n";
+		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << " _|_||___||___||___||___||___||___||_|_ \n";
+		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << "  | ||   ||   ||   ||   ||   ||   || |  \n";
+		std::cout << " _|_||___||___||___||___||___||___||_|_ \n";
+		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
+		std::cout << " -'-||---||---||---||---||---||---||-'- \n";
+
+		//Level Select
 		cords(15, 28);
 		std::cout << "Level 1";
-		cords(50, 28);
+		cords(60, 28);
 		std::cout << "Level 2";
-		cords(85, 28);
+		cords(105, 28);
 		std::cout << "Level 3";
 
 		while (input != char(13)) //if enter hasn't been inputted
@@ -128,15 +148,15 @@ void levelSelect()
 			{
 				if (x > 10)
 				{
-					x -= 35;
+					x -= 45;
 				}
 			}
 
 			if (input == 'd')
 			{
-				if (x < 45)
+				if (x < 65)
 				{
-					x += 35;
+					x += 45;
 				}
 			}
 		}
@@ -147,13 +167,13 @@ void levelSelect()
 			level1();
 		}
 
-		if (x == 35)
+		if (x == 45)
 		{
 			//WIP
 			level2();
 		}
 
-		if (x == 70)
+		if (x == 90)
 		{
 			//WIP
 			level3();
