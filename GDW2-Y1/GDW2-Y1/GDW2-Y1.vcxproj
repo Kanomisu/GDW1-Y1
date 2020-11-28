@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="levels.cpp" />
+    <ClCompile Include="level1.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="level2.cpp" />
+    <ClCompile Include="level3.cpp" />
+    <ClCompile Include="levels.cpp" />
     <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="levels.h" />
     <ClInclude Include="resources.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

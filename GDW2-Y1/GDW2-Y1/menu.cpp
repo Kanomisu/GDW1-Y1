@@ -1,14 +1,9 @@
 #include "resources.h"
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <cstdlib>
 
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); //just a variable for "console"
 
 void help();
 void credits();
-void cords(int, int);
 
 void menu()
 {
@@ -94,6 +89,7 @@ void menu()
 
 void levelSelect()
 {
+	levels select;
 	char input = '0';
 	int x = 0;
 	bool selecting = true;
@@ -163,20 +159,23 @@ void levelSelect()
 
 		if (x == 0)
 		{
-			//WIP
-			level1();
+			selecting = false;
+			select.level1();
 		}
 
 		if (x == 45)
 		{
 			//WIP
-			level2();
+			selecting = false;
+			select.level2();
 		}
 
 		if (x == 90)
 		{
 			//WIP
-			level3();
+			//if ()
+			selecting = false;
+			select.level3();
 		}
 
 		system("CLS");
