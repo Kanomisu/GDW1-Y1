@@ -4,9 +4,11 @@ class levels
 {
 public:
 	void level1();
+	void fileRoute();
 	void level2();
 	void level3();
 	//void updatelevelPriv();
+	void control();
 
 private:
 	bool finishLevel1 = false;

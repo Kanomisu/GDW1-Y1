@@ -190,10 +190,20 @@ void help()
 	system("CLS");
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-	std::cout << "Help WIP";
-
 	cords(80, 28);
 	std::cout << "BACK";
+	cords(56, 9);
+	std::cout << "HOW TO PLAY";
+	cords(51, 10);
+	std::cout << "---------------------";
+	cords(27, 12);
+	std::cout << "1. Use WASD and ENTER to select your choices!";
+	cords(27, 14);
+	std::cout << "2. Progress through the story and depending on your choices will you succeed!";
+	cords(27, 16);
+	std::cout << "3. Unlock further levels by reaching one of the ends in the previous entries!";
+	cords(27, 18);
+	std::cout << "4. Have Fun!!!";
 	while (input != char(13))
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
@@ -213,8 +223,20 @@ void credits()
 	system("CLS");
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-	std::cout << "Credits WIP";
-
+	cords(58, 9);
+	std::cout << "CREDITS";
+	cords(51, 10);
+	std::cout << "---------------------";
+	cords(50, 12);
+	std::cout << "Ryan Dinh - 100804962";
+	cords(50, 14);
+	std::cout << "lol";
+	cords(50, 16);
+	std::cout << "lol";
+	cords(50, 18);
+	std::cout << "lol";
+	cords(50, 20);
+	std::cout << "lol";
 	cords(80, 28);
 	std::cout << "BACK";
 	while (input != char(13))
