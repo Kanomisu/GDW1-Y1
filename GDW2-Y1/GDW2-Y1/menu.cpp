@@ -1,14 +1,18 @@
 #include "resources.h"
-
+#include "levels.h"
 HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); //just a variable for "console"
 
 void help();
 void credits();
+void options();
+
+levels use;
 
 void menu()
 {
 	char input = '0';
 	int y = 0; //y is set at 0 aka hovering over level select
+	int* pY = &y;
 	bool running = true;
 	system("CLS");
 
@@ -17,46 +21,23 @@ void menu()
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		cords(61, 10);
 		std::cout << "Main Menu";
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9);
 		cords(56, 11);
 		std::cout << "___________________";
 
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		cords(59, 14);
-		std::cout << "1) Level Select";
-		cords(59, 16);
-		std::cout << "2) How to Play";
-		cords(59, 18);
-		std::cout << "3) Credits";
-		cords(59, 20);
-		std::cout << "4) Exit Game";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		cords(57, 14);
+		std::cout << "  Level Select";
+		cords(57, 16);
+		std::cout << "  How to Play";
+		cords(57, 18);
+		std::cout << "  Credits";
+		cords(57, 20);
+		std::cout << "  Options";
+		cords(57, 22);
+		std::cout << "  Exit Game";
 
-		while (input != char(13)) //if enter hasn't been inputted
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
-			cords(56, 14 + y);
-			std::cout << "->"; //cursor
-			cords(0, 0); //puts the underscore at top left
-			input = _getch();
-			cords(56, 14 + y);
-			std::cout << "  ";
-
-			if (input == 's')
-			{
-				if (y < 6)
-				{
-					y += 2;
-				}
-			}
-
-			if (input == 'w')
-			{
-				if (y > 0)
-				{
-					y -= 2;
-				}
-			}
-		}
+		use.WSInput(input, 56, 14, pY, 2, 8, 0, true, 72, 14);
 
 		if (y == 0) //ends menu -> level select
 		{
@@ -77,7 +58,13 @@ void menu()
 			y = 4;
 		}
 
-		if (y == 6) //exit
+		if (y == 6)
+		{
+			options();
+			y = 6;
+		}
+
+		if (y == 8) //exit
 		{
 			exit(0);
 		}
@@ -89,9 +76,9 @@ void menu()
 
 void levelSelect()
 {
-	levels select;
 	char input = '0';
 	int x = 0;
+	int* pX = &x;
 	bool selecting = true;
 
 	while (selecting)
@@ -99,8 +86,6 @@ void levelSelect()
 		//Name change later accordingly..
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
-		cords(10, 6);
-		std::cout << "Escape the Prison";
 		cords(0, 9);
 		std::cout << " _|_||___||___||___||___||___||___||_|_ \n";
 		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
@@ -118,7 +103,70 @@ void levelSelect()
 		std::cout << " -.-..---..---..---..---..---..---..-.- \n";
 		std::cout << " -'-||---||---||---||---||---||---||-'- \n";
 
+		cords(49, 9);
+		std::cout << " ______________________________";
+		cords(49, 10);
+		std::cout << "|                              |";
+		cords(49, 11);
+		std::cout << "|          __________          |";
+		cords(49, 12);
+		std::cout << "|         /__________\\         |";
+		cords(49, 13);
+		std::cout << "|         \\          /         |";
+		cords(49, 14);
+		std::cout << "|          \\        /          |";
+		cords(49, 15);
+		std::cout << "|           \\      /           |";
+		cords(49, 16);
+		std::cout << "|            \\    /            |";
+		cords(49, 17);
+		std::cout << "|             \\  /             |";
+		cords(49, 18);
+		std::cout << "|______________\\/______________|";
+		cords(49, 19);
+		std::cout << "|                              |";
+		cords(49, 20);
+		std::cout << "|                              |";
+		cords(49, 21);
+		std::cout << "|                              |";
+		cords(49, 22);
+		std::cout << "|______________________________|";
+
+		cords(94, 9);
+		std::cout << "      ___________________";
+		cords(94, 10);
+		std::cout << "     |                   |";
+		cords(94, 11);
+		std::cout << "     |                   |";
+		cords(94, 12);
+		std::cout << "     |                   |";
+		cords(94, 13);
+		std::cout << "     |                   |";
+		cords(94, 14);
+		std::cout << "     |                   |";
+		cords(94, 15);
+		std::cout << "     |                   |";
+		cords(94, 16);
+		std::cout << "     |                   |";
+		cords(94, 17);
+		std::cout << "     |                   |";
+		cords(94, 18);
+		std::cout << "     |___________________|";
+		cords(94, 19);
+		std::cout << " ____|___________________|____";
+		cords(94, 20);
+		std::cout << "/                             \\";
+		cords(94, 21);
+		std::cout << "\\_____________________________/";
+		cords(94, 22);
+		std::cout << " ____|___________________|____";
+		cords(94, 23);
+		std::cout << "/                             \\";
+		cords(94, 24);
+		std::cout << "\\_____________________________/";
+
 		//Level Select
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 		cords(15, 28);
 		std::cout << "Level 1";
 		cords(60, 28);
@@ -126,48 +174,28 @@ void levelSelect()
 		cords(105, 28);
 		std::cout << "Level 3";
 
-		while (input != char(13)) //if enter hasn't been inputted
-		{
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
-			cords(11 + x, 28); //moving left -> right / right -> left
-			std::cout << "->"; //cursor leftside
-			cords(24 + x, 28);
-			std::cout << "<-"; //cursor rightside
-			cords(0, 0);
-			input = _getch();
-			cords(11 + x, 28);
-			std::cout << "  "; //refresh every button press
-			cords(24 + x, 28);
-			std::cout << "  ";
+		//Name Level
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cords(10, 6);
+		std::cout << "Escaping the Prison";
+		cords(55, 6);
+		std::cout << "Stealing the Diamond";
+		cords(97, 6);
+		std::cout << "Infiltrating the Airship";
 
-			if (input == 'a')
-			{
-				if (x > 10)
-				{
-					x -= 45;
-				}
-			}
-
-			if (input == 'd')
-			{
-				if (x < 65)
-				{
-					x += 45;
-				}
-			}
-		}
+		use.ADInput(input, 11, 28, pX, 45, 65, 0, true, 24, 28);
 
 		if (x == 0)
 		{
 			selecting = false;
-			select.level1();
+			use.level1();
 		}
 
 		if (x == 45)
 		{
 			//WIP
 			selecting = false;
-			select.level2();
+			use.level2();
 		}
 
 		if (x == 90)
@@ -175,7 +203,7 @@ void levelSelect()
 			//WIP
 			//if ()
 			selecting = false;
-			select.level3();
+			use.level3();
 		}
 
 		system("CLS");
@@ -230,13 +258,13 @@ void credits()
 	cords(50, 12);
 	std::cout << "Ryan Dinh - 100804962";
 	cords(50, 14);
-	std::cout << "lol";
+	std::cout << "Arianna Thorson - 100673627";
 	cords(50, 16);
-	std::cout << "lol";
+	std::cout << "William Tu - 100661019";
 	cords(50, 18);
-	std::cout << "lol";
+	std::cout << "Kevin Huang - 100788603";
 	cords(50, 20);
-	std::cout << "lol";
+	std::cout << "Sivanes Mayooran - 100786195";
 	cords(80, 28);
 	std::cout << "BACK";
 	while (input != char(13))
@@ -248,6 +276,65 @@ void credits()
 		input = _getch();
 		cords(75, 28 + y);
 		std::cout << "  ";
+	}
+}
+
+void options()
+{
+	char input = '0';
+	int x = 20;
+	system("CLS");
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+	cords(53, 9);
+	std::cout << "TEXT READ SPEED";
+	cords(51, 10);
+	std::cout << "---------------------";
+	cords(46, 13);
+	std::cout << "Increase";
+	cords(69, 13);
+	std::cout << "Decrease";
+	cords(52, 20);
+	std::cout << "FASTER = LOWER NUM";
+	cords(80, 28);
+	std::cout << "PRESS ENTER TO GO BACK";
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
+	cords(60, 14);
+	use.displaySpeed();
+	while (input != char(13)) //not hit enter
+	{
+		cords(70, 14); 
+		std::cout << "->";
+		cords(50, 14);
+		std::cout << "<-";
+		cords(0, 0);
+		input = _getch();
+		if (input == 'a')
+		{
+			if (x > 0)
+			{
+				x -= 1;
+				use.changeSpeed(0); //I couldn't get pointers to work :(
+				cords(60, 14);
+				std::cout << "  ";
+				cords(60, 14);
+				use.displaySpeed();
+			}
+		}
+
+		if (input == 'd')
+		{
+			if (x < 50)
+			{
+				x += 1;
+				use.changeSpeed(1);
+				cords(60, 14);
+				std::cout << "  ";
+				cords(60, 14);
+				use.displaySpeed();
+			}
+		}
 	}
 }
 

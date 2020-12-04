@@ -2,6 +2,7 @@
 
 void levels::level2()
 {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	if (finishLevel1)
 	{
 
@@ -13,14 +14,11 @@ void levels::level2()
 		int y = 0;
 		system("CLS");
 
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 		char* intro = (char*)"You have not beaten the first level yet!!!";
-		for (int x = 0; intro[x] != '\0'; x++)
-		{
-			std::cout << intro[x];
-			Sleep(40);
-		}
+		typeDisplay(intro);
 
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
 		cords(80, 28);
 		std::cout << "BACK";
 		while (input != char(13))

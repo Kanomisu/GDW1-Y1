@@ -1,139 +1,148 @@
-#include "resources.h"
 #include "levels.h"
+#include "resources.h"
 //all subject to change (even the code itself 'n variables)
 
 //select from levelSelect();
 void levels::level1() //escape the prison
 {
-	bool playing = true;
-	bool selecting = true;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	playing = true;
 	char input = '0';
 	int x = 0;
 	int y = 0;
+	int* pX = &x;
+	int* pY = &y;
 	system("CLS");
 	while (playing)
 	{
-		char* intro = (char*)"Henry is laying on his bed in one of the cells in the prison, when guards walk up to him to make fun of him.\nThey then deliver a package that was mailed to him.\n\nHe finds 6 contraptions inside the cake delivered to him upon inspection... ITS BREAKOUT TIME";
-		for (int x = 0; intro[x] != '\0'; x++) 
+		if (!played) //for retry purposes
 		{
-			std::cout << intro[x];
-			Sleep(20);
+			failCounter1 = 0; //if you happen to go to level select and come back in same session
+			char* intro = (char*)"You're Henry Stickmin, and you're currently locked up in a jail cell due to a botched bank heist.\n\nA pair prison guards approaches your cell.\nPrison guard: Hey you! You're free to go. ";
+			typeDisplay(intro);
+			Sleep(3000);
+			char* intro2 = (char*)"Haha, no. I'm just kidding. We got a package for you. Here you go.";
+			typeDisplay(intro2);
+			Sleep(1500);
+			char* intro3 = (char*)"\n\nThey toss the package into your cell.\nAfter the guards leave you open the package to find a wonderful cake... Inside you find: ";
+			typeDisplay(intro3);
+			played = true;
 		}
-		
+		else
+		{
+			std::cout << "You're Henry Stickmin, and you're currently locked up in a jail cell due to a botched bank heist.\n\nA pair prison guards approaches your cell.\nPrison guard: Hey you! You're free to go. ";
+			std::cout << "Haha, no. I'm just kidding. We got a package for you. Here you go.\n\nThey toss the package into your cell.\nAfter the guards leave you open the package. Inside you find:";
+		}
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 		//ITEM 1
-		cords(16, 5);
+		cords(16, 8);
 		std::cout << "_____";
 		for (int i = 0; i < 12; i++)
 		{
-			cords(15, 6 + i);
+			cords(15, 9 + i);
 			std::cout << "|#####|";
 		}
-		cords(15, 18);
-		std::cout << "|_____|";
-		cords(15, 19);
-		std::cout << "|     |";
-		cords(15, 20);
-		std::cout << "| ___ |";
 		cords(15, 21);
-		std::cout << "||   ||";
-		cords(15, 22);
-		std::cout << "||   ||";
-		cords(15, 23);
-		std::cout << "||___||";
-		cords(15, 24);
 		std::cout << "|_____|";
-		cords(13, 30);
-		std::cout << "	File";
+		cords(15, 22);
+		std::cout << "|     |";
+		cords(15, 23);
+		std::cout << "| ___ |";
+		cords(15, 24);
+		std::cout << "||   ||";
+		cords(15, 25);
+		std::cout << "||   ||";
+		cords(15, 26);
+		std::cout << "||___||";
+		cords(15, 27);
+		std::cout << "|_____|";
 
 		//ITEM 2
-		cords(53, 5);
-		std::cout << "      _________";
-		cords(53, 6);
-		std::cout << "     |         |";
-		cords(53, 7);
-		std::cout << "	   |_________|";
 		cords(53, 8);
-		std::cout << "      |       |";
+		std::cout << "      _________";
 		cords(53, 9);
-		std::cout << "    _/_________\\_";
+		std::cout << "     |         |";
 		cords(53, 10);
-		std::cout << "   /             \\";
+		std::cout << "	  |_________|";
 		cords(53, 11);
-		std::cout << " _/               \\_";
+		std::cout << "      |       |";
 		cords(53, 12);
-		std::cout << "|                   |";
+		std::cout << "    _/_________\\_";
 		cords(53, 13);
-		std::cout << " \\                 /";
+		std::cout << "   /             \\";
 		cords(53, 14);
-		std::cout << "  |               |";
+		std::cout << " _/               \\_";
 		cords(53, 15);
-		std::cout << " /                 \\";
-		cords(53, 16);
-		std::cout << "|___________________|";
-		cords(53, 17);
-		std::cout << "|          ___  ___ |";
-		cords(53, 18);
-		std::cout << "| |\\    | |   \\/  _ |";
-		cords(53, 19);
-		std::cout << "| | \\   | |___/\\___||";
-		cords(53, 20);
-		std::cout << "| |  \\  | |\\        |";
-		cords(53, 21);
-		std::cout << "| |   \\ | | \\       |";
-		cords(53, 22);
-		std::cout << "| |    \\| |  \\      |";
-		cords(53, 23);
-		std::cout << "|___________________|";
-		cords(53, 24);
 		std::cout << "|                   |";
-		cords(53, 25);
+		cords(53, 16);
+		std::cout << " \\                 /";
+		cords(53, 17);
+		std::cout << "  |               |";
+		cords(53, 18);
+		std::cout << " /                 \\";
+		cords(53, 19);
 		std::cout << "|___________________|";
-		cords(58, 30);
-		std::cout << " NRg Drink";
+		cords(53, 20);
+		std::cout << "|          ___  ___ |";
+		cords(53, 21);
+		std::cout << "| |\\    | |   \\/  _ |";
+		cords(53, 22);
+		std::cout << "| | \\   | |___/\\___||";
+		cords(53, 23);
+		std::cout << "| |  \\  | |\\        |";
+		cords(53, 24);
+		std::cout << "| |   \\ | | \\       |";
+		cords(53, 25);
+		std::cout << "| |    \\| |  \\      |";
+		cords(53, 26);
+		std::cout << "|___________________|";
+		cords(53, 27);
+		std::cout << "|                   |";
+		cords(53, 28);
+		std::cout << "|___________________|";
 
 		//ITEM 3
-		cords(98, 5);
-		std::cout << "            O";
-		cords(98, 6);
-		std::cout << "            |";
-		cords(98, 7);
-		std::cout << "            z";
 		cords(98, 8);
-		std::cout << "            \\";
+		std::cout << "            O";
 		cords(98, 9);
-		std::cout << "            z";
+		std::cout << "            |";
 		cords(98, 10);
-		std::cout << "            |";
+		std::cout << "            z";
 		cords(98, 11);
-		std::cout << "            |";
+		std::cout << "            \\";
 		cords(98, 12);
-		std::cout << " ___________|___________";
+		std::cout << "            z";
 		cords(98, 13);
-		std::cout << "|                       |";
+		std::cout << "            |";
 		cords(98, 14);
-		std::cout << "|  ___________________  |";
+		std::cout << "            |";
 		cords(98, 15);
-		std::cout << "| |         |         | |";
+		std::cout << " ___________|___________";
 		cords(98, 16);
-		std::cout << "| |         |         | |";
+		std::cout << "|                       |";
 		cords(98, 17);
-		std::cout << "| |      ___|___      | |";
+		std::cout << "|  ___________________  |";
 		cords(98, 18);
-		std::cout << "| |     /       \\     | |";
+		std::cout << "| |         |         | |";
 		cords(98, 19);
-		std::cout << "| |____/         \\____| |";
+		std::cout << "| |         |         | |";
 		cords(98, 20);
-		std::cout << "| |    \\         /    | |";
+		std::cout << "| |      ___|___      | |";
 		cords(98, 21);
-		std::cout << "| |     \\_______/     | |";
+		std::cout << "| |     /       \\     | |";
 		cords(98, 22);
-		std::cout << "| |                   | |";
+		std::cout << "| |____/         \\____| |";
 		cords(98, 23);
-		std::cout << "| |___________________| |";
+		std::cout << "| |    \\         /    | |";
 		cords(98, 24);
+		std::cout << "| |     \\_______/     | |";
+		cords(98, 25);
+		std::cout << "| |                   | |";
+		cords(98, 26);
+		std::cout << "| |___________________| |";
+		cords(98, 27);
 		std::cout << "|_______________________|";
-		cords(103, 30);
-		std::cout << "	Teleporter";
 
 		//ITEM 4
 		cords(0, 50);
@@ -154,8 +163,6 @@ void levels::level1() //escape the prison
 		std::cout << "            |  |/";
 		cords(0, 58);
 		std::cout << "            |___\\";
-		cords(13, 65);
-		std::cout << "Rocket Launcher";
 
 		//ITEM 5
 		cords(51, 33);
@@ -218,8 +225,6 @@ void levels::level1() //escape the prison
 		std::cout << "|    I   I   I   I   I   |";
 		cords(51, 62);
 		std::cout << "|________________________|";
-		cords(58, 65);
-		std::cout << " Cellphone";
 
 		//ITEM 6
 		cords(98, 40);
@@ -260,67 +265,60 @@ void levels::level1() //escape the prison
 		std::cout << "        \\_/";
 		cords(98, 58);
 		std::cout << "         V ";
+		
+		//CAKE
+		cords(51, 69);
+		std::cout << "\\                        /";
+		cords(53, 71);
+		std::cout << "\\                    /";
+		cords(55, 72);
+		std::cout << " __O___O___O___O__";
+		cords(55, 73);
+		std::cout << "|~~~~~~~~~~~~~~~~~|";
+		cords(55, 74);
+		std::cout << "|~~~~~~~~~~~~~~~~~|";
+		cords(55, 75);
+		std::cout << "|                 |";
+		cords(55, 76);
+		std::cout << "|~~~~~~~~~~~~~~~~~|";
+		cords(55, 77);
+		std::cout << "|_________________|";
+
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		cords(13, 30);
+		std::cout << "	File";
+		cords(58, 30);
+		std::cout << " NRg Drink";
+		cords(103, 30);
+		std::cout << "	Teleporter";
+		cords(13, 65);
+		std::cout << "Rocket Launcher";
+		cords(58, 65);
+		std::cout << " Cellphone";
 		cords(103, 65);
 		std::cout << "	Drill";
 
 		//INPUT
-		while (input != char(13)) //not hit enter
-		{
-			cords(11 + x, 30 + y); //moving left -> right / right -> left
-			std::cout << "->"; //cursor leftside
-			cords(0, 0);
-			input = _getch();
-			cords(11 + x, 30 + y);
-			std::cout << "  ";
+		WASDInput(input, 11, 30, pX, pY, 45, 35, 90, 0, 35, 0);
 
-			if (input == 'a')
-			{
-				if (x > 0)
-				{
-					x -= 45;
-				}
-			}
-
-			if (input == 'd')
-			{
-				if (x < 90)
-				{
-					x += 45;
-				}
-			}
-
-			if (input == 'w')
-			{
-				if (y > 0)
-				{
-					y -= 35;
-				}
-			}
-
-			if (input == 's')
-			{
-				if (y < 35)
-				{
-					y += 35;
-				}
-			}
-		}
-
+		//ROUTES
 		if (x == 0 && y == 0)
 		{
+			played = false;
 			fileRoute();
 		}
 		if (x == 45 && y == 0)
 		{
-			//nrgdrinkRoute();
+			nrgFail();
 		}
 		if (x == 90 && y == 0)
 		{
-			//teleporterRoute();
+			teleporterFail();
 		}
 		if (x == 0 && y == 35)
 		{
-			//rocketRoute();
+			rocketFail();
 		}
 		if (x == 45 && y == 35)
 		{
@@ -331,6 +329,11 @@ void levels::level1() //escape the prison
 			//drillRoute();
 		}
 
+		//reset everything
+		playing = false;
+		played = false;
+		failCounter1 = 0;
+		system("CLS");
 		levelSelect();
 	}
 }
