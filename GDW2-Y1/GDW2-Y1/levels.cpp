@@ -598,6 +598,10 @@ void levels::plungersWin()
 
 	char* award = (char*)"Sneaky Ending Achieved!";
 	sneaky = true;
+	played = false;
+	played2 = false;
+	played3 = false;
+	failCounter1 = 0;
 	clearKeyboardBuffer();
 	successPrint(award, 74);
 }
@@ -1025,6 +1029,10 @@ void levels::evidenceWin()
 
 	char* award = (char*)"Lame Ending Achieved!";
 	justice = true;
+	played = false;
+	played2 = false;
+	played3 = false;
+	failCounter1 = 0;
 	clearKeyboardBuffer();
 	successPrint(award, 75);
 }
@@ -1249,6 +1257,10 @@ void levels::straightWin()
 
 	char* award = (char*)"Badass Ending Achieved!";
 	epic = true;
+	played = false;
+	played2 = false;
+	played3 = false;
+	failCounter1 = 0;
 	clearKeyboardBuffer();
 	successPrint(award, 74);
 }

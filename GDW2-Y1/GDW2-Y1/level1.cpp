@@ -7,10 +7,6 @@ void levels::level1() //escape the prison
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	playing = true;
-	played = false;
-	played2 = false;
-	played3 = false;
-	failCounter1 = 0;
 	char input = '0';
 	int x = 0;
 	int y = 0;
@@ -337,6 +333,8 @@ void levels::level1() //escape the prison
 		//reset everything
 		playing = false;
 		played = false;
+		played2 = false;
+		played3 = false;
 		failCounter1 = 0;
 		system("CLS");
 		levelSelect();
