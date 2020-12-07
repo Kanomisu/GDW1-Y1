@@ -8,6 +8,34 @@ void options();
 
 levels use;
 
+void title()
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	std::cout << "\n\n\n\n\n\n" <<
+		"				 __     __    ______    ____     __    _______     ___   ___\n" <<
+		"				|  |   |  |  |   ___|  |    \\   |  |  |   __  \\    \\  \\ /  /\n" <<
+		"				|  |___|  |  |  |___   |  |\\ \\  |  |  |  |__| /     \\  V  /\n" <<
+		"				|   ___   |  |   ___|  |  | \\ \\ |  |  |   __  \\      \\   /\n" <<
+		"				|  |   |  |  |  |___   |  |  \\ \\|  |  |  |  \\  \\      | |\n" <<
+		"				|__|   |__|  |______|  |__|   \\____|  |__|   \\__\\     |_|\n" <<
+		"  _______     \n" <<
+		" /  ___  \\    __________    __________       ________    __   __    ____          ____    __________    ___      __ \n" <<
+		"/  /   \\__\\  |___    ___|  |___    ___|     /  ______|  |  | /  /  |    \\        /    |  |___    ___|  |   \\    |  |\n" <<
+		"\\  \\_____        |  |          |  |        /  /         |  |/  /   |  |\\ \\      / /|  |      |  |      |    \\   |  |\n" <<
+		" \\_____  \\       |  |          |  |       /  /          |     /    |  | \\ \\    / / |  |      |  |      |  |\\ \\  |  |\n" <<
+		"___    \\  \\      |  |          |  |       \\  \\          |     \\    |  |  \\ \\  / /  |  |      |  |      |  | \\ \\ |  |\n" <<
+		"\\  \\___/  /      |  |       ___|  |___     \\  \\______   |  |\\  \\   |  |   \\ \\/ /   |  |   ___|  |___   |  |  \\ \\|  |\n" <<
+		" \\_______/       |__|      |__________|     \\________|  |__| \\__\\  |__|    \\__/    |__|  |__________|  |__|   \\____|\n";
+	
+	cords(38, 28);
+	std::cout << "\t\tPress any button to continue!";
+	int input = _getch();
+	if (input == 0xE0)
+	{
+		input = _getch();
+	}
+}
+
 void menu()
 {
 	char input = '0';
@@ -15,10 +43,60 @@ void menu()
 	int* pY = &y;
 	bool running = true;
 	system("CLS");
-
+	use.clearKeyboardBuffer();
 	while (running)
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+		cords(25, 5);
+		std::cout << "   __ __";
+		cords(25, 6);
+		std::cout << "   _____";
+		cords(25, 7);
+		std::cout << "  /     \\";
+		cords(25, 8);
+		std::cout << " /  | |  \\";
+		cords(25, 9);
+		std::cout << " \\ \\___/ /";
+		cords(25, 10);
+		std::cout << "  \\_____/";
+		cords(25, 11);
+		std::cout << "    /|\\";
+		cords(25, 12);
+		std::cout << "   / | \\";
+		cords(25, 13);
+		std::cout << "  |  |  \\          ________";
+		cords(25, 14);
+		std::cout << "  |  |   \\________/ __\\____)";
+		cords(25, 15);
+		std::cout << "  |  |            \\___/";
+		cords(25, 16);
+		std::cout << "  |  |";
+		cords(25, 17);
+		std::cout << "  |  |";
+		cords(25, 18);
+		std::cout << "  |  |";
+		cords(25, 19);
+		std::cout << " /|\\ |";
+		cords(25, 20);
+		std::cout << "/ | \\|";
+		cords(25, 21);
+		std::cout << "     |";
+		cords(25, 22);
+		std::cout << "    / \\";
+		cords(25, 23);
+		std::cout << "   /   \\";
+		cords(25, 24);
+		std::cout << "  |     |";
+		cords(25, 25);
+		std::cout << "  |     |";
+		cords(25, 26);
+		std::cout << "  |     |";
+		cords(25, 27);
+		std::cout << "  |     |";
+		cords(25, 28);
+		std::cout << "  |__   |__";
+		cords(25, 29);
+		std::cout << "  |__\\  |__\\";
 		cords(61, 10);
 		std::cout << "Main Menu";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9);
@@ -44,6 +122,7 @@ void menu()
 			running = false;
 			system("CLS");
 			input = ' ';
+			levelSelect();
 		}
 
 		if (y == 2) //how to play
@@ -183,6 +262,23 @@ void levelSelect()
 		cords(97, 6);
 		std::cout << "Infiltrating the Airship";
 
+		//trophies
+		if (use.justice)
+		{
+			cords(9, 30);
+			std::cout << "Lame Ending Achieved!";
+		}
+		if (use.sneaky)
+		{
+			cords(9, 31);
+			std::cout << "Sneaky Ending Achieved!";
+		}
+		if (use.epic)
+		{
+			cords(9, 32);
+			std::cout << "Badass Ending Achieved!";
+		}
+
 		use.ADInput(input, 11, 28, pX, 45, 65, 0, true, 24, 28);
 
 		if (x == 0)
@@ -231,7 +327,11 @@ void help()
 	cords(27, 16);
 	std::cout << "3. Unlock further levels by reaching one of the ends in the previous entries!";
 	cords(27, 18);
-	std::cout << "4. Have Fun!!!";
+	std::cout << "4. Collect all the Endings!";
+	cords(27, 20);
+	std::cout << "5. Make sure you're playing in fullscreen or resized to a somewhat large window!";
+	cords(27, 22);
+	std::cout << "6. Have Fun!!!";
 	while (input != char(13))
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);

@@ -7,6 +7,10 @@ void levels::level1() //escape the prison
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	playing = true;
+	played = false;
+	played2 = false;
+	played3 = false;
+	failCounter1 = 0;
 	char input = '0';
 	int x = 0;
 	int y = 0;
@@ -27,11 +31,12 @@ void levels::level1() //escape the prison
 			char* intro3 = (char*)"\n\nThey toss the package into your cell.\nAfter the guards leave you open the package to find a wonderful cake... Inside you find: ";
 			typeDisplay(intro3);
 			played = true;
+			clearKeyboardBuffer();
 		}
 		else
 		{
 			std::cout << "You're Henry Stickmin, and you're currently locked up in a jail cell due to a botched bank heist.\n\nA pair prison guards approaches your cell.\nPrison guard: Hey you! You're free to go. ";
-			std::cout << "Haha, no. I'm just kidding. We got a package for you. Here you go.\n\nThey toss the package into your cell.\nAfter the guards leave you open the package. Inside you find:";
+			std::cout << "Haha, no. I'm just kidding. We got a package for you. Here you go.\n\nThey toss the package into your cell.\nAfter the guards leave you open the package to find a wonderful cake... Inside you find: ";
 		}
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
@@ -322,11 +327,11 @@ void levels::level1() //escape the prison
 		}
 		if (x == 45 && y == 35)
 		{
-			//cellphoneRoute();
+			cellphoneRoute();
 		}
 		if (x == 90 && y == 35)
 		{
-			//drillRoute();
+			drillRoute();
 		}
 
 		//reset everything

@@ -6,6 +6,7 @@
 #include <cstdlib>
 //this all just makes things accessible to applicable files for cleanliness
 
+void title();
 void menu();
 void levelSelect();
 void cords(int x, int y);

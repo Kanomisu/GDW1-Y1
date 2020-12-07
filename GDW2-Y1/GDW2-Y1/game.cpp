@@ -2,14 +2,12 @@
 
 void setWindow(int, int);
 
-//assuming we're adapting 3 levels minimum I'll set it so you can set 3 levels prior to pushing the code 
-//	- Ryan
-
 int main() //all functions will go here
 {
-	setWindow(110, 40);
+	SetConsoleTitle(L"Henry Stickmin Collection");
+	setWindow(120, 40);
+	title();
 	menu();					//once menu is done it'll go to levelSelect and so on
-	levelSelect();			//select the level you want to play
 }
 
 void setWindow(int Width, int Height)

@@ -5,7 +5,8 @@ void levels::level2()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	if (finishLevel1)
 	{
-
+		cords(56, 30);
+		std::cout << "WIP";
 	}
 
 	else
